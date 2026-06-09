@@ -30,7 +30,7 @@ class ForcePublisher(Node):
         gz_msg = EntityWrench()
         
         # Set entity (which model to apply force to)
-        gz_msg.entity.name = 'block'
+        gz_msg.entity.name = 'quadcopter'  # Change to your model name
         gz_msg.entity.type = Entity.MODEL
         
         # Copy force and torque from ROS message
@@ -42,7 +42,7 @@ class ForcePublisher(Node):
         gz_msg.wrench.torque.z = ros_msg.torque.z
         
         # Publish to Gazebo
-        publisher = self.gz_node.advertise('/world/block_world/wrench', EntityWrench)
+        publisher = self.gz_node.advertise('/world/movable_shapes_world/wrench', EntityWrench)
         publisher.publish(gz_msg)
         
         self.get_logger().info(f'Applied force: x={ros_msg.force.x}, z={ros_msg.force.z}')

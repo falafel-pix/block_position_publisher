@@ -19,17 +19,17 @@ def generate_launch_description():
     bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
-        name='block_pose_bridge',
-        arguments=['/model/block/pose@geometry_msgs/msg/PoseStamped[gz.msgs.Pose'],
+        name='pose_bridge',
+        arguments=['/model/quadcopter/pose@geometry_msgs/msg/PoseStamped[gz.msgs.Pose'],
         output='screen',
     )
    
-    bridge_wrench = Node(
-        package='ros_gz_bridge',
-        executable='parameter_bridge',
-        name='block_wrench_bridge',
-        arguments=['/world/block_world/wrench@geometry_msgs/msg/Wrench[gz.msgs.EntityWrench'],
-        output='screen',
+    bridge_odom = Node(
+    package='ros_gz_bridge',
+    executable='parameter_bridge',
+    name='quadcopter_odom_bridge',
+    arguments=['/model/quadcopter/odometry@nav_msgs/msg/Odometry[gz.msgs.Odometry'],
+    output='screen',
     )
     
     # Start the force publisher node
@@ -41,7 +41,7 @@ def generate_launch_description():
     )
     delayed_bridge = TimerAction(
         period=3.0,
-        actions=[bridge,bridge_wrench,force_publisher]
+        actions=[bridge,force_publisher,bridge_odom]
     )
     
     return LaunchDescription([
