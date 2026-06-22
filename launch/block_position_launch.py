@@ -39,18 +39,40 @@ def generate_launch_description():
         name='force_publisher',
         output='screen',
     )
-    geometric_controller = Node(
+    new_control = Node(
         package='block_position_publisher',
-        executable='geometric_controller',
-        name='geometric_controller',
+        executable='new_control',
+        name='new_control',
+        output='screen',
+    )
+    bridge_camera = Node(
+    package='ros_gz_image',
+    executable='image_bridge',
+    name='mono_camera_bridge',
+    arguments=['/world/movable_shapes_world/model/quadcopter/link/base_link/sensor/mono_camera/image'],
+    output='screen',
+    )
+    bridge_camera2 = Node(
+    package='ros_gz_image',
+    executable='image_bridge',
+    name='mono1_camera_bridge',
+    arguments=['/world/movable_shapes_world/model/quadcopter/link/base_link/sensor/mono1_camera/image'],
+    output='screen',
+    )
+    gamepad = Node(
+        package='block_position_publisher',
+        executable='gamepad',
+        name='gamepad',
         output='screen',
     )
     delayed_bridge = TimerAction(
-        period=10.0,
-        actions=[bridge,force_publisher,bridge_odom,geometric_controller]
+        period=5.0,
+        actions=[bridge,force_publisher,bridge_odom,new_control,bridge_camera,bridge_camera2,gamepad]
     )
+    
     
     return LaunchDescription([
         gz_sim,
         delayed_bridge,
+       
     ])

@@ -26,6 +26,9 @@ setup(
         'console_scripts': [
             'force_publisher = block_position_publisher.force_publisher:main',
             'geometric_controller = block_position_publisher.geometric_controller:main',
+            'object_detect = block_position_publisher.object_detect:main',
+            'new_control = block_position_publisher.new_control:main', 
+            'gamepad = block_position_publisher.gamepad:main',
         ],
     },
 )

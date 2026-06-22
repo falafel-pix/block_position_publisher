@@ -3,6 +3,7 @@ from rclpy.node import Node
 import numpy as np
 from geometry_msgs.msg import PoseStamped, Wrench
 from nav_msgs.msg import Odometry
+from sensor_msgs.msg import Imu
 
 
 
@@ -23,7 +24,7 @@ class GeometricController(Node):
         super().__init__('geometric_controller')
 
             # ── Gains ──────────────────────────────────────────────────
-        self.Kp = np.diag([0.1, 0.3, 8.0])
+        self.Kp = np.diag([1.0, 1.0, 1.0])
 
         self.Kd = np.diag([1.0, 1.0, 2.0])
 
@@ -42,11 +43,8 @@ class GeometricController(Node):
 
         self.get_logger().info(f"Controller mass = {self.m}")
         self.J = np.diag([
-            1.395e-5,
-            1.395e-5,
-            2.173e-5
-        ])
-
+        6.4e-4, 6.4e-4, 1.28e-3])
+   
         # Odometry ≈ 40 Hz
         self.dt = 0.01
         
@@ -58,7 +56,7 @@ class GeometricController(Node):
         self.omega = np.zeros(3)                        # angular velocity
 
         # ── Setpoints (edit here or make ROS params) ───────────────
-        self.pd = np.array([19.0, 0.0, 2.0]) # desired position (hover at 1m)
+        self.pd = np.array([5.0, 0.0, 3.0]) # desired position (hover at 1m)
         self.vd    = np.zeros(3)                  # desired velocity
         self.ad    = np.zeros(3)                  # desired acceleration
         self.psi_d = 0.0                          # desired yaw angle (rad)
@@ -71,7 +69,8 @@ class GeometricController(Node):
             self.odom_callback,
             1
         )
-
+        self.imu_sub = self.create_subscription(Imu, '/imu/data', self.imu_callback, 10)
+    
         # ── Publisher ──────────────────────────────────────────────
         self.force_pub = self.create_publisher(Wrench, '/block/force', 1)
 
@@ -97,29 +96,93 @@ class GeometricController(Node):
             msg.pose.pose.position.z,
         ])
      
-        self.q = np.array([
-            msg.pose.pose.orientation.w,
-            msg.pose.pose.orientation.x,
-            msg.pose.pose.orientation.y,
-            msg.pose.pose.orientation.z,
-        ])
+        # self.q = np.array([
+        #     msg.pose.pose.orientation.w,
+        #     msg.pose.pose.orientation.x,
+        #     msg.pose.pose.orientation.y,
+        #     msg.pose.pose.orientation.z,
+        # ])
         
         self.v = np.array([
             msg.twist.twist.linear.x,
             msg.twist.twist.linear.y,
             msg.twist.twist.linear.z,
         ])
-       
+      
+        # self.omega = np.array([
+        #     msg.twist.twist.angular.x,
+        #     msg.twist.twist.angular.y,
+        #     msg.twist.twist.angular.z,
+        # ])
+        timestamp = self.get_clock().now().nanoseconds / 1e9
+
+        row = {
+            'time': timestamp,
+
+            'px': self.p[0],
+            'py': self.p[1],
+            'pz': self.p[2],
+
+            'qx': self.q[0],
+            'qy': self.q[1],
+            'qz': self.q[2],
+            'qw': self.q[3],
+
+            'vx': self.v[0],
+            'vy': self.v[1],
+            'vz': self.v[2],
+
+            'wx': self.omega[0],
+            'wy': self.omega[1],
+            'wz': self.omega[2]
+        }
+
+        self.log_data.append(row)
+
+    def imu_callback(self, msg: Imu):
+        """Extract orientation, angular velocity, and linear acceleration from /imu/data."""
+        # 1. Save orientation quaternion matching his [w, x, y, z] order style
+        self.q = np.array([
+            msg.orientation.w,
+            msg.orientation.x,
+            msg.orientation.y,
+            msg.orientation.z,
+        ])
+    
+ # 2. Save angular velocity (omega) from the IMU
         self.omega = np.array([
-            msg.twist.twist.angular.x,
-            msg.twist.twist.angular.y,
-            msg.twist.twist.angular.z,
+            msg.angular_velocity.x,
+            msg.angular_velocity.y,
+            msg.angular_velocity.z,
         ])
        
+        # 3. Save linear acceleration from the IMU
+        self.accel = np.array([
+            msg.linear_acceleration.x,
+            msg.linear_acceleration.y,
+            msg.linear_acceleration.z,
+        ])
         
+        # 4. Generate timestamp and log data just like his structure
+        timestamp = self.get_clock().now().nanoseconds / 1e9
 
-        
-        #
+        imu_row = {
+            'time': timestamp,
+
+            'imu_qw': self.q[0],
+            'imu_qx': self.q[1],
+            'imu_qy': self.q[3],
+
+            'imu_wx': self.omega[0],
+            'imu_wy': self.omega[1],
+            'imu_wz': self.omega[2],
+
+            'imu_ax': self.accel[0],
+            'imu_ay': self.accel[1],
+            'imu_az': self.accel[2]
+        }
+
+        self.log_data.append(imu_row)
         
 
     # ──────────────────────────────────────────────────────────────
@@ -161,7 +224,7 @@ class GeometricController(Node):
         a_des = (self.ad
                  - self.Kp @ ep
                  - self.Kd @ ev
-                 + self.Ki @ self.ep_int)
+                 - self.Ki @ self.ep_int)
         print("a_des =", a_des)
         # ── Desired thrust vector (world frame) ────────────────────
         #f_des = self.m * (a_des - np.array([0.0, 0.0, -self.g]))
@@ -172,8 +235,8 @@ class GeometricController(Node):
         
 
         # ── Collective thrust (project onto body z-axis) ──────────
-        thrust = float(f_des @ (R @ np.array([0.0, 0.0, 1.0])))  # project desired force onto current body z-axis
-        thrust = float(np.clip(thrust, 0.0, 1.5))
+        thrust = float(f_des @ (R @ np.array([0.0, 0.0, 1.0])))
+        thrust = float(np.clip(thrust, 0.0, 1500))
 
         # ── Desired attitude (Rd) ──────────────────────────────────
         b3_des = f_des / np.linalg.norm(f_des)
@@ -196,12 +259,12 @@ class GeometricController(Node):
         eR = 0.5 * self.vee(Rd.T @ R - R.T @ Rd)
 
         # ── Angular velocity error ─────────────────────────────────
-        eomega = R.T @ self.omega                          # desired omega = 0
+        eomega = self.omega                          # desired omega = 0
 
         # ── Control torque ─────────────────────────────────────────
         torque = (- self.KR @ eR
                   - self.Kw @ eomega
-                  - np.cross(eomega, self.J @ eomega))
+                  + np.cross(self.omega, self.J @ self.omega))
         torque = np.clip(torque, -0.02, 0.02)
         print("thrust =", thrust)
         #------------converter----------------
@@ -235,7 +298,9 @@ def main():
         pass
     finally:
         node.destroy_node()
-       
+        df = pd.DataFrame(node.log_data)
+        df.to_csv("log_data_1.csv", index=False)
+
         rclpy.shutdown()
 
 
