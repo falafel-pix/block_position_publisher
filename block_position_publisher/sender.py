@@ -41,8 +41,8 @@ JOY_RETURNALL = (JOY_RETURNX | JOY_RETURNY | JOY_RETURNZ |
                  JOY_RETURNR | JOY_RETURNU | JOY_RETURNV |
                  JOY_RETURNPOV | JOY_RETURNBUTTONS)
 
-# WSL2 IP - 
-WSL_IP = "192.168.171.88"
+# WSL2 IP target IP of wsl here - 
+WSL_IP = ""
 UDP_PORT = 5555
 
 def main():
