@@ -5,4 +5,4 @@ The sender.py should be running in powershell, even though here it is shown in t
 visuo_front should be running if you want front camera feed which has YOLO nano.
  visuo_inertial using feature tracking to estimate velocity and hence position.
    Both of the above are already executables and not in launch file, they need to be run separately as per requirement.
-   Running to many image processing nodes causes RTF(real time factor) of gazebo to go down and hence the controller effectiveness decreases
+   Running too many image processing nodes causes RTF(real time factor) of gazebo to go down and hence the controller effectiveness decreases
