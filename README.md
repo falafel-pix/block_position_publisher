@@ -1,7 +1,8 @@
 the combination required to run can be changed.
-Geomtric_controller.py has trajectory_tracking enabled and will run by default.
-If you want to control using gamapad, geomtric_gamepad should be run, along with sender file in power to send button commands to WSL. To run the latter file change the name of file for executable "new_controller" in setup.py to geomtric_gamepad.
+Geometric_controller.py has trajectory_tracking enabled and will run by default.
+If you want to control using gamapad, geometric_gamepad should be run, along with sender file in power to send button commands to WSL. To run the latter file change the name of file for executable "new_controller" in setup.py to geomtric_gamepad.
 The sender.py should be running in powershell, even though here it is shown in the packge itself.
+To run new_controller change the file name accordingly, also gamepad1 is compatible with geometric_gamepad and gamepad file is compatible with new_control,accordingly make changees in setup.py.
 visuo_front should be running if you want front camera feed which has YOLO nano.
  visuo_inertial using feature tracking to estimate velocity and hence position.
    Both of the above are already executables and not in launch file, they need to be run separately as per requirement.
