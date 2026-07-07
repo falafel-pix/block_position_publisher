@@ -5,6 +5,9 @@ from geometry_msgs.msg import PoseStamped, Wrench
 from nav_msgs.msg import Odometry
 from sensor_msgs.msg import Imu
 from std_msgs.msg import Float64MultiArray
+from block_position_publisher.trajectory_tracker import TrajectoryGenerator
+
+import time
 
 
 
@@ -35,6 +38,8 @@ class GeometricController(Node):
 
         self.Kw = np.diag([0.05, 0.05, 0.02])
         self.log_data = []
+        self.start_time=self.get_clock().now().nanoseconds / 1e9
+
 
 
 
@@ -48,6 +53,7 @@ class GeometricController(Node):
    
         # Odometry ≈ 40 Hz
         self.dt = 0.01
+       
         
 
         # ── Current state (updated by subscribers) ─────────────────
@@ -224,6 +230,11 @@ class GeometricController(Node):
 
     def control_loop(self):
         # ── Position & velocity errors ─────────────────────────────
+        time_now = self.get_clock().now().nanoseconds / 1e9
+        elapsed_time = time_now - self.start_time
+      
+        trajectory=TrajectoryGenerator(traj_type='circle', radius=1.0, omega=0.2, altitude=1.5, center=[0.0, 0.0])
+        self.pd, self.vd, self.ad, self.psi_d = trajectory.get_setpoint(elapsed_time, 0.01)
         if self.p is None:
             return
         ep = self.p - self.pd        # position error
@@ -249,7 +260,7 @@ class GeometricController(Node):
 
         # ── Collective thrust (project onto body z-axis) ──────────
         thrust = float(f_des @ (R @ np.array([0.0, 0.0, 1.0])))
-        thrust = float(np.clip(thrust, 0.0, 1.0))  # limit thrust to [0, 1] for safety
+        thrust = float(np.clip(thrust, 0.0, 1.5))
 
         # ── Desired attitude (Rd) ──────────────────────────────────
         b3_des = f_des / np.linalg.norm(f_des)
@@ -279,7 +290,7 @@ class GeometricController(Node):
         torque = (- self.KR @ eR
                   - self.Kw @ eomega
                   + np.cross(self.omega, self.J @ self.omega))
-        torque = np.clip(torque, -0.015, 0.015)
+        torque = np.clip(torque, -0.02, 0.02)
         print("thrust =", thrust)
         #------------converter----------------
         thrust_vector = R @ np.array([0.0, 0.0, thrust]) 
@@ -312,7 +323,8 @@ def main():
         pass
     finally:
         node.destroy_node()
-        
+        df = pd.DataFrame(node.log_data)
+        df.to_csv("log_data_1.csv", index=False)
 
         rclpy.shutdown()
 

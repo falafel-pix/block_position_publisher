@@ -1,0 +1,22 @@
+<?xml version='1.0' ?>
+<sdf version="1.6">
+    <model name="Phone">
+        <static>true</static>
+        <link name="link">
+            <collision name="collision">
+                <geometry>
+                    <mesh>
+                        <uri>https://fuel.gazebosim.org/1.0/nate/models/phone/4/files/meshes/Phone.dae</uri>
+                    </mesh>
+                </geometry>
+            </collision>
+            <visual name="visual">
+                <geometry>
+                    <mesh>
+                        <uri>https://fuel.gazebosim.org/1.0/nate/models/phone/4/files/meshes/Phone.dae</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+        </link>
+    </model>
+</sdf>
