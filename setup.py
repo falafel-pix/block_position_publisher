@@ -25,10 +25,11 @@ setup(
     entry_points={
         'console_scripts': [
             'force_publisher = block_position_publisher.force_publisher:main',
-            'new_controller = block_position_publisher.geometric_gamepad:main',
+            'new_controller = block_position_publisher.geometric_controller:main',
             'gamepad_receiver = block_position_publisher.gamepad1:main',
             'visuo_inertial = block_position_publisher.visuo_inertial:main',
-            'visuo_front = block_position_publisher.visuo_front:main'
+            'visuo_front = block_position_publisher.visuo_front:main',
+            'kalman_filter = block_position_publisher.kalman:main',
         ],
     },
 )

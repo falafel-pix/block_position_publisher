@@ -68,115 +68,125 @@
 <model name="checkerboard_ground">
   <static>true</static>
   
-  <!-- Row 0 -->
-  <link name="tile_0_0"><pose>0 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_0_1"><pose>0.5 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_0_2"><pose>1.0 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_0_3"><pose>1.5 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_0_4"><pose>2.0 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_0_5"><pose>2.5 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_0_6"><pose>3.0 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_0_7"><pose>3.5 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_0_8"><pose>4.0 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_0_9"><pose>4.5 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_0_10"><pose>5.0 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_0_11"><pose>5.5 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_0_12"><pose>6.0 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_0_13"><pose>6.5 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_0_14"><pose>7.0 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_0_15"><pose>7.5 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_0_16"><pose>8.0 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_0_17"><pose>8.5 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_0_18"><pose>9.0 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_0_19"><pose>9.5 0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+  <!-- Row 0 (y = -2.25) -->
+<link name="tile_0_0"><pose>-2.25 -2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_0_1"><pose>-1.75 -2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_0_2"><pose>-1.25 -2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_0_3"><pose>-0.75 -2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_0_4"><pose>-0.25 -2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_0_5"><pose>0.25 -2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_0_6"><pose>0.75 -2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_0_7"><pose>1.25 -2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_0_8"><pose>1.75 -2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_0_9"><pose>2.25 -2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
 
-  <!-- Row 1 -->
-  <link name="tile_1_0"><pose>0 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_1_1"><pose>0.5 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_1_2"><pose>1.0 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_1_3"><pose>1.5 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_1_4"><pose>2.0 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_1_5"><pose>2.5 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_1_6"><pose>3.0 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_1_7"><pose>3.5 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_1_8"><pose>4.0 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_1_9"><pose>4.5 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_1_10"><pose>5.0 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_1_11"><pose>5.5 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_1_12"><pose>6.0 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_1_13"><pose>6.5 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_1_14"><pose>7.0 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_1_15"><pose>7.5 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_1_16"><pose>8.0 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_1_17"><pose>8.5 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_1_18"><pose>9.0 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_1_19"><pose>9.5 0.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<!-- Row 1 (y = -1.75) -->
+<link name="tile_1_0"><pose>-2.25 -1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_1_1"><pose>-1.75 -1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_1_2"><pose>-1.25 -1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_1_3"><pose>-0.75 -1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_1_4"><pose>-0.25 -1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_1_5"><pose>0.25 -1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_1_6"><pose>0.75 -1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_1_7"><pose>1.25 -1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_1_8"><pose>1.75 -1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_1_9"><pose>2.25 -1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
 
-  <!-- Row 2 -->
-  <link name="tile_2_0"><pose>0 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_2_1"><pose>0.5 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_2_2"><pose>1.0 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_2_3"><pose>1.5 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_2_4"><pose>2.0 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_2_5"><pose>2.5 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_2_6"><pose>3.0 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_2_7"><pose>3.5 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_2_8"><pose>4.0 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_2_9"><pose>4.5 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_2_10"><pose>5.0 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_2_11"><pose>5.5 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_2_12"><pose>6.0 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_2_13"><pose>6.5 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_2_14"><pose>7.0 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_2_15"><pose>7.5 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_2_16"><pose>8.0 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_2_17"><pose>8.5 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_2_18"><pose>9.0 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_2_19"><pose>9.5 1.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<!-- Row 2 (y = -1.25) -->
+<link name="tile_2_0"><pose>-2.25 -1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_2_1"><pose>-1.75 -1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_2_2"><pose>-1.25 -1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_2_3"><pose>-0.75 -1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_2_4"><pose>-0.25 -1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_2_5"><pose>0.25 -1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_2_6"><pose>0.75 -1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_2_7"><pose>1.25 -1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_2_8"><pose>1.75 -1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_2_9"><pose>2.25 -1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
 
-  <!-- Row 3 -->
-  <link name="tile_3_0"><pose>0 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_3_1"><pose>0.5 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_3_2"><pose>1.0 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_3_3"><pose>1.5 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_3_4"><pose>2.0 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_3_5"><pose>2.5 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_3_6"><pose>3.0 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_3_7"><pose>3.5 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_3_8"><pose>4.0 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_3_9"><pose>4.5 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_3_10"><pose>5.0 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_3_11"><pose>5.5 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_3_12"><pose>6.0 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_3_13"><pose>6.5 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_3_14"><pose>7.0 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_3_15"><pose>7.5 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_3_16"><pose>8.0 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_3_17"><pose>8.5 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_3_18"><pose>9.0 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_3_19"><pose>9.5 1.5 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<!-- Row 3 (y = -0.75) -->
+<link name="tile_3_0"><pose>-2.25 -0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_3_1"><pose>-1.75 -0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_3_2"><pose>-1.25 -0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_3_3"><pose>-0.75 -0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_3_4"><pose>-0.25 -0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_3_5"><pose>0.25 -0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_3_6"><pose>0.75 -0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_3_7"><pose>1.25 -0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_3_8"><pose>1.75 -0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_3_9"><pose>2.25 -0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
 
-  <!-- Row 4 -->
-  <link name="tile_4_0"><pose>0 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_4_1"><pose>0.5 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_4_2"><pose>1.0 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_4_3"><pose>1.5 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_4_4"><pose>2.0 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_4_5"><pose>2.5 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_4_6"><pose>3.0 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_4_7"><pose>3.5 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_4_8"><pose>4.0 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_4_9"><pose>4.5 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_4_10"><pose>5.0 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_4_11"><pose>5.5 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_4_12"><pose>6.0 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_4_13"><pose>6.5 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_4_14"><pose>7.0 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_4_15"><pose>7.5 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_4_16"><pose>8.0 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_4_17"><pose>8.5 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
-  <link name="tile_4_18"><pose>9.0 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
-  <link name="tile_4_19"><pose>9.5 2.0 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<!-- Row 4 (y = -0.25) -->
+<link name="tile_4_0"><pose>-2.25 -0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_4_1"><pose>-1.75 -0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_4_2"><pose>-1.25 -0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_4_3"><pose>-0.75 -0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_4_4"><pose>-0.25 -0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_4_5"><pose>0.25 -0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_4_6"><pose>0.75 -0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_4_7"><pose>1.25 -0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_4_8"><pose>1.75 -0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_4_9"><pose>2.25 -0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+
+<!-- Row 5 (y = 0.25) -->
+<link name="tile_5_0"><pose>-2.25 0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_5_1"><pose>-1.75 0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_5_2"><pose>-1.25 0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_5_3"><pose>-0.75 0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_5_4"><pose>-0.25 0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_5_5"><pose>0.25 0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_5_6"><pose>0.75 0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_5_7"><pose>1.25 0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_5_8"><pose>1.75 0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_5_9"><pose>2.25 0.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+
+<!-- Row 6 (y = 0.75) -->
+<link name="tile_6_0"><pose>-2.25 0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_6_1"><pose>-1.75 0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_6_2"><pose>-1.25 0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_6_3"><pose>-0.75 0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_6_4"><pose>-0.25 0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_6_5"><pose>0.25 0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_6_6"><pose>0.75 0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_6_7"><pose>1.25 0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_6_8"><pose>1.75 0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_6_9"><pose>2.25 0.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+
+<!-- Row 7 (y = 1.25) -->
+<link name="tile_7_0"><pose>-2.25 1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_7_1"><pose>-1.75 1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_7_2"><pose>-1.25 1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_7_3"><pose>-0.75 1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_7_4"><pose>-0.25 1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_7_5"><pose>0.25 1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_7_6"><pose>0.75 1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_7_7"><pose>1.25 1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_7_8"><pose>1.75 1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_7_9"><pose>2.25 1.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+
+<!-- Row 8 (y = 1.75) -->
+<link name="tile_8_0"><pose>-2.25 1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_8_1"><pose>-1.75 1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_8_2"><pose>-1.25 1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_8_3"><pose>-0.75 1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_8_4"><pose>-0.25 1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_8_5"><pose>0.25 1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_8_6"><pose>0.75 1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_8_7"><pose>1.25 1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_8_8"><pose>1.75 1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_8_9"><pose>2.25 1.75 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+
+<!-- Row 9 (y = 2.25) -->
+<link name="tile_9_0"><pose>-2.25 2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_9_1"><pose>-1.75 2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_9_2"><pose>-1.25 2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_9_3"><pose>-0.75 2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_9_4"><pose>-0.25 2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_9_5"><pose>0.25 2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_9_6"><pose>0.75 2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_9_7"><pose>1.25 2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
+<link name="tile_9_8"><pose>1.75 2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual></link>
+<link name="tile_9_9"><pose>2.25 2.25 0.005 0 0 0</pose><visual name="vis"><geometry><box><size>0.5 0.5 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual></link>
 </model>
   <!-- Row 5 -->
     <model name="circular_box_0"><static>true</static><pose>20.000 0.000 0.5 0 0 0</pose><link name="link"><collision name="collision"><geometry><box><size>0.5 0.5 1.0</size></box></geometry></collision><visual name="visual"><geometry><box><size>0.5 0.5 10.0</size></box></geometry><material><ambient>1 0 0 1</ambient><diffuse>1 0 0 1</diffuse></material></visual></link></model>

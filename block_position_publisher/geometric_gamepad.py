@@ -228,21 +228,21 @@ class GeometricController(Node):
             return
         ep = self.p - self.pd        # position error
         ev = self.v - self.vd
-        print("vz =", self.v[2])         # velocity error
+        # print("vz =", self.v[2])         # velocity error
         self.ep_int += ep * self.dt    # integral of position error
-        print("p =", self.p)
-        print("pd =", self.pd)
-        print("ep =", ep)
+        # print("p =", self.p)
+        # print("pd =", self.pd)
+        # print("ep =", ep)
         # ── Desired acceleration ───────────────────────────────────
         a_des = (self.ad
                  - self.Kp @ ep
                  - self.Kd @ ev
                  - self.Ki @ self.ep_int)
-        print("a_des =", a_des)
+        # print("a_des =", a_des)
         # ── Desired thrust vector (world frame) ────────────────────
         #f_des = self.m * (a_des - np.array([0.0, 0.0, -self.g]))
         f_des = self.m * (a_des + np.array([0.0, 0.0, self.g]))  # gravity compensation
-        print("f_des =", f_des)
+        # print("f_des =", f_des)
         # ── Rotation matrix from current quaternion ────────────────
         R = self.quat_to_rotation_matrix(self.q)
         
@@ -280,11 +280,10 @@ class GeometricController(Node):
                   - self.Kw @ eomega
                   + np.cross(self.omega, self.J @ self.omega))
         torque = np.clip(torque, -0.015, 0.015)
-        print("thrust =", thrust)
+        # print("thrust =", thrust)
         #------------converter----------------
         thrust_vector = R @ np.array([0.0, 0.0, thrust]) 
-        print("R =\n", R)
-        print("thrust_vector =", thrust_vector) # thrust in world frame
+        
         torquer = R @ torque  # torque in world frame
         #print(thrust_vector,torquer);
         # ── Publish Wrench ─────────────────────────────────────────

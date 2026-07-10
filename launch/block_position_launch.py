@@ -77,16 +77,22 @@ def generate_launch_description():
     arguments=['/world/movable_shapes_world/model/quadcopter/link/base_link/sensor/mono1_camera/image'],
     output='screen',
     )
-    # visuo_inertial = Node(
-    #     package='block_position_publisher',
-    #     executable='visuo_front',
-    #     name='visuo_front',
-    #     output='screen',
-    # )
+    visuo_inertial = Node(
+        package='block_position_publisher',
+        executable='visuo_inertial',
+        name='visuo_inertial',
+        output='screen',
+    )
+    kalman_filter = Node(
+        package='block_position_publisher',
+        executable='kalman_filter',
+        name='kalman_filter',
+        output='screen',
+    )
     
     delayed_bridge = TimerAction(
-        period=5.0,
-        actions=[bridge, force_publisher, bridge_odom, new_controller, bridge_camera,bridge1_camera, gamepad_receiver, bridge_imu]
+        period=2.0,
+        actions=[bridge, force_publisher, bridge_odom, new_controller, bridge_camera,bridge1_camera, gamepad_receiver, visuo_inertial, bridge_imu, kalman_filter]
     )
     
     return LaunchDescription([

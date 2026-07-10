@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 Step 9: Position from visual velocity integration
+With enhanced debug prints and position comparison
 """
 
 import rclpy
@@ -33,6 +34,15 @@ class VisualPosition(Node):
         self.position_x = 0.0
         self.position_y = 0.0
         
+        # Ground truth for comparison
+        self.gt_position_x = 0.0
+        self.gt_position_y = 0.0
+        self.gt_velocity_x = 0.0
+        self.gt_velocity_y = 0.0
+        
+        # Frame counter for periodic prints
+        self.frame_count = 0
+        
         self.feature_params = dict(
             maxCorners=100,
             qualityLevel=0.01,
@@ -64,12 +74,21 @@ class VisualPosition(Node):
         self.vel_pub = self.create_publisher(Twist, '/visual_velocity', 10)
         self.pos_pub = self.create_publisher(Point, '/visual_position', 10)
         
-        self.get_logger().info('Step 9: Visual position running...')
+        # Timer for periodic debug comparison
+        self.create_timer(2.0, self.debug_comparison)
+        
+        self.get_logger().info('Visual position running with enhanced debug...')
     
     def odom_callback(self, msg):
         self.current_altitude = msg.pose.pose.position.z
         if self.current_altitude < 0.5:
             self.current_altitude = 0.5
+        
+        # Store ground truth
+        self.gt_position_x = msg.pose.pose.position.x
+        self.gt_position_y = msg.pose.pose.position.y
+        self.gt_velocity_x = msg.twist.twist.linear.x
+        self.gt_velocity_y = msg.twist.twist.linear.y
     
     def image_callback(self, msg):
         current_gray = self.bridge.imgmsg_to_cv2(msg, desired_encoding='mono8')
@@ -117,16 +136,36 @@ class VisualPosition(Node):
                     
                     # Pixel to meters
                     scale = self.current_altitude / self.focal_length
-                    dx_meters = -avg_flow_x * scale
-                    dy_meters = -avg_flow_y * scale
+                    dx_meters = avg_flow_x * scale
+                    dy_meters = avg_flow_y * scale
                     
-                    # Velocity
-                    self.velocity_x = dx_meters / dt
-                    self.velocity_y = dy_meters / dt
+                    # Velocity (swap x and y for camera orientation)
+                    self.velocity_x = dy_meters / dt
+                    self.velocity_y = dx_meters / dt
+                    
+                    # Print velocity comparison
+                    self.frame_count += 1
+                    # if self.frame_count % 5 == 0:  # Print every 5 frames to reduce spam
+                    #     self.get_logger().info(
+                    #         f'VELOCITY COMPARISON: '
+                    #         f'Predicted: ({self.velocity_x:.3f}, {self.velocity_y:.3f}) m/s | '
+                    #         f'Ground Truth: ({self.gt_velocity_x:.3f}, {self.gt_velocity_y:.3f}) m/s | '
+                    #         f'Error: ({self.velocity_x - self.gt_velocity_x:.3f}, '
+                    #         f'{self.velocity_y - self.gt_velocity_y:.3f}) m/s'
+                    #     )
                     
                     # STEP 9: Integrate position
                     self.position_x += self.velocity_x * dt
                     self.position_y += self.velocity_y * dt
+                    
+                    # Print position comparison (every frame)
+                    # self.get_logger().info(
+                    #     f'POSITION COMPARISON: '
+                    #     f'Predicted: ({self.position_x:.3f}, {self.position_y:.3f}) m | '
+                    #     f'Ground Truth: ({self.gt_position_x:.3f}, {self.gt_position_y:.3f}) m | '
+                    #     f'Error: ({self.position_x - self.gt_position_x:.3f}, '
+                    #     f'{self.position_y - self.gt_position_y:.3f}) m'
+                    # )
                     
                     # Publish
                     vel_msg = Twist()
@@ -140,7 +179,7 @@ class VisualPosition(Node):
                     pos_msg.z = self.current_altitude
                     self.pos_pub.publish(pos_msg)
                     
-                    # Red arrow
+                    # Red arrow for flow direction
                     h, w = display.shape[:2]
                     center = (w // 2, h // 2)
                     end_pt = (center[0] + int(avg_flow_x * 3), center[1] + int(avg_flow_y * 3))
@@ -155,14 +194,33 @@ class VisualPosition(Node):
                 x, y = pt.ravel()
                 cv2.circle(display, (int(x), int(y)), 4, (255, 0, 0), -1)
         
-        # Display
-        cv2.putText(display, f'Velocity: [{self.velocity_x:.2f}, {self.velocity_y:.2f}] m/s', (5, 20),
+        # Enhanced display with position comparison
+        # Yellow: Predicted velocity
+        cv2.putText(display, f'Predicted Vel: [{self.velocity_x:.2f}, {self.velocity_y:.2f}] m/s', (5, 20),
                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 255), 1)
-        cv2.putText(display, f'Position: [{self.position_x:.2f}, {self.position_y:.2f}] m', (5, 40),
-                   cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 255), 1)
-        cv2.putText(display, f'Altitude: {self.current_altitude:.2f} m', (5, 60),
+        # Green: Ground truth velocity
+        cv2.putText(display, f'GT Vel: [{self.gt_velocity_x:.2f}, {self.gt_velocity_y:.2f}] m/s', (5, 40),
                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
-        cv2.putText(display, f'Tracked: {tracked} | New: {new_count}', (5, 80),
+        
+        # Cyan: Predicted position
+        cv2.putText(display, f'Predicted Pos: ({self.position_x:.2f}, {self.position_y:.2f}) m', (5, 60),
+                   cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 0), 1)
+        # White: Ground truth position
+        cv2.putText(display, f'GT Pos: ({self.gt_position_x:.2f}, {self.gt_position_y:.2f}) m', (5, 80),
+                   cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
+        
+        # Position error in red
+        pos_error_x = self.position_x - self.gt_position_x
+        pos_error_y = self.position_y - self.gt_position_y
+        cv2.putText(display, f'Pos Error: ({pos_error_x:.2f}, {pos_error_y:.2f}) m', (5, 100),
+                   cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
+        
+        # Additional info
+        cv2.putText(display, f'Altitude: {self.current_altitude:.2f} m', (5, 120),
+                   cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
+        cv2.putText(display, f'Tracked: {tracked} | New: {new_count}', (5, 140),
+                   cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
+        cv2.putText(display, f'Scale: {self.current_altitude/self.focal_length:.4f} m/px', (5, 160),
                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
         
         cv2.imshow('Visual Position', display)
@@ -170,11 +228,32 @@ class VisualPosition(Node):
         
         self.prev_gray = current_gray.copy()
         self.prev_points = new_points
+    
+    def debug_comparison(self):
+        """Periodic comparison between optical flow and ground truth"""
+        self.get_logger().info(
+            f'\n{"="*60}'
+        )
+       
         
         self.get_logger().info(
-            f'Pos: [{self.position_x:.2f}, {self.position_y:.2f}] m | '
-            f'Vel: [{self.velocity_x:.2f}, {self.velocity_y:.2f}] m/s'
+            f' Predicted Position: [{self.position_x:.3f}, {self.position_y:.3f}] m'
         )
+        self.get_logger().info(
+            f' Ground Truth Position: [{self.gt_position_x:.3f}, {self.gt_position_y:.3f}] m'
+        )
+        
+        self.get_logger().info(
+            f'{"-"*60}'
+        )
+        self.get_logger().info(
+            f' Predicted Velocity: [{self.velocity_x:.3f}, {self.velocity_y:.3f}] m/s'
+        )
+        self.get_logger().info(
+            f' Ground Truth Velocity: [{self.gt_velocity_x:.3f}, {self.gt_velocity_y:.3f}] m/s'
+        )
+        
+        
 
 
 def main(args=None):
